@@ -1,0 +1,15 @@
+{
+    "data":[
+        {"id":1,"title":"系统管理","icon":"icon-puzzle","url":"","children":[
+            {"id":2,"title":"菜单设置","icon":"icon-tag","url":"/sys/menus","parentId":1},
+            {"id":3,"title":"角色管理","icon":"icon-tag","url":"/sys/roles","parentId":1},
+            {"id":4,"title":"用户管理","icon":"icon-tag","url":"/sys/users","parentId":1},
+            {"id":5,"title":"个性化设置","icon":"icon-tag","url":"/sys/profile","parentId":1},
+            {"id":6,"title":"缓存管理","icon":"icon-tag","url":"/sys/cache","parentId":1}
+        ]},
+        {"id":7, "title":"Lucas Test","icon":"icon-star","url":"", "children":[
+            {"id":8, "title":"模块异步加载","icon":"icon-cup","url":"/lucas", "parentId":7},
+            {"id":9, "title":"Tree Table","icon":"icon-cup","url":"/lucas/menusmgr", "parentId":7}
+        ]}
+    ]
+}
