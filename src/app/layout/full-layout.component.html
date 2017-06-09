@@ -1,0 +1,54 @@
+<app-header></app-header>
+<div class="app-body">
+    <div class="sidebar">
+        <nav class="sidebar-nav">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']"><i class="icon-speedometer"></i> 导航菜单 </a>
+                </li>
+                <li class="divider"></li>
+
+                <ng-template ngFor let-menu [ngForOf]='getChildMenus(0)'  routerLinkActive="open" >
+                    <li class="nav-item nav-dropdown" [ngClass]="{open: hasCurrentUrl(menu)}" appNavDropdown *ngIf="hasChildren(+menu.id); else nochild">
+                        <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle>
+                            <i class="{{menu.icon}}"></i> {{ menu.title}}</a>
+                        
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item" *ngFor="let sub of getChildMenus(+menu.id)">
+                                <a class="nav-link" routerLinkActive="active" [routerLink]="[sub.url]">
+                                    <i class="{{sub.icon}}"></i> {{sub.title}}</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <ng-template #nochild>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLinkActive="active" [routerLink]="[menu.url]">
+                                <i class="{{menu.icon}}"></i> {{menu.title}} <span class="badge badge-info">NEW</span></a>
+                        </li>
+                    </ng-template>
+
+                </ng-template>
+
+                
+                
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main content -->
+    <main class="main">
+
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb">
+            <app-breadcrumbs></app-breadcrumbs>
+        </ol>
+
+        <div class="container-fluid">
+            <router-outlet></router-outlet>
+        </div>
+        <!-- /.conainer-fluid -->
+    </main>
+</div>
+
+<app-footer></app-footer>

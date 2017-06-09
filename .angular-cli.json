@@ -19,9 +19,15 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+         "scss/style.scss",
+          "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+         "assets/lib/jquery.min.js",
+        "assets/lib/bootstrap.min.js",
+        "assets/lib/blockui.min.js",
+        "assets/lib/pnotify.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
