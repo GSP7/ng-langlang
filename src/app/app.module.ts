@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { HttpModule } from "@angular/http";
+import { HttpModule } from '@angular/http';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
@@ -31,8 +31,6 @@ import { MenusResolver } from './services/menus.resolver';
     NAV_DROPDOWN_DIRECTIVES,
     AsideToggleDirective,
     SIDEBAR_TOGGLE_DIRECTIVES
-    
-
   ],
   imports: [
     BrowserModule,
@@ -40,7 +38,12 @@ import { MenusResolver } from './services/menus.resolver';
     BsDropdownModule.forRoot(),
     AppRoutingModule,
   ],
-  providers: [ MenuService,MenusResolver ],
-  bootstrap: [AppComponent]
+  providers: [
+    MenuService,
+    MenusResolver
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

@@ -9,16 +9,24 @@ import { MenusResolver } from './services/menus.resolver';
 // import { AuthGuard } from './services/auth/auth-guard.service';
 
 export const routes: Routes = [
-    //{ path:'login', component: LoginComponent},
-    //{ path:'', redirectTo: 'dashboard', pathMatch:'full'},
-    { path:'', component:  FullLayoutComponent, data: { title: 'Home' },   resolve:{menus: MenusResolver}}
-      
+    // { path:'login', component: LoginComponent},
+    // { path:'', redirectTo: 'dashboard', pathMatch:'full'},
+    { path: '', component:  FullLayoutComponent, data: { title: 'Home' },
+      resolve: {menus: MenusResolver},
+      children: [
+        { path: 'weekplan', loadChildren: './weekplan/weekplan.module#WeekplanModule'}
+      ]
+    }
 ]
 
 @NgModule({
-    imports:[RouterModule.forRoot(routes, { useHash:true,enableTracing:false})], // enableTracing: 开启路由事件跟踪
-    exports:[ RouterModule ]
+    imports: [
+      RouterModule.forRoot(routes, { useHash: true, enableTracing: false})
+    ], // enableTracing: 开启路由事件跟踪
+    exports: [
+      RouterModule
+    ]
 })
-export class AppRoutingModule{
+export class AppRoutingModule {
 
 }

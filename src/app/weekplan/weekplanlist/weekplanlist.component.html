@@ -1,0 +1,65 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>
+        <div class="checkbox">
+          <input type="checkbox" id="headCheckbox" name="headCheckbox" #headCheckbox style="vertical-align: middle" (click)="handleHeadCheckboxs($event)" />
+        </div>
+      </th>
+      <th>计划名称</th>
+      <!--<th>备注</th>-->
+      <th>验收标准</th>
+      <!--<th>责任人</th>-->
+      <th>计划资源投入</th>
+      <th>实际资源投入</th>
+      <th>计划完成百分比</th>
+      <th>实际完成百分比</th>
+      <!--<th>未完成原因</th>-->
+      <!--<th>采取措施</th>-->
+      <!--<th>计划进度</th>-->
+      <!--<th>实际进度</th>-->
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <div class="checkbox">
+          <input appCheckboxdirective [setId]="id"
+           type="checkbox" class="childcheckbox" [attr.id]="id"  [attr.name]="id" style="vertical-align: middle" (click)="handleItemCheckbox(id)" />
+        </div>
+      </td>
+      <td>a1</td>
+      <!--<td>a2</td>-->
+      <td>a3</td>
+      <!--<td>a4</td>-->
+      <td>a5</td>
+      <td>a6</td>
+      <td>a7</td>
+      <td>a8</td>
+      <!--<td>a9</td>-->
+      <!--<td>a10</td>-->
+      <!--<td>a11</td>-->
+      <!--<td>a12</td>-->
+    </tr>
+    <tr>
+      <td>
+        <div class="checkbox">
+          <input appCheckboxdirective [setId]="id"
+           type="checkbox" class="childcheckbox" [attr.id]="id"  [attr.name]="id" style="vertical-align: middle" (click)="handleItemCheckbox(id)" />
+        </div>
+      </td>
+      <td>a1</td>
+      <!--<td>a2</td>-->
+      <td>a3</td>
+      <!--<td>a4</td>-->
+      <td>a5</td>
+      <td>a6</td>
+      <td>a7</td>
+      <td>a8</td>
+      <!--<td>a9</td>-->
+      <!--<td>a10</td>-->
+      <!--<td>a11</td>-->
+      <!--<td>a12</td>-->
+    </tr>
+  </tbody>
+</table>
