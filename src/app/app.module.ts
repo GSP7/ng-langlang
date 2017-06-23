@@ -1,4 +1,6 @@
-import { NgModule } from '@angular/core';
+import { AuthGuardService } from './services/auth/auth-guard.service';
+import { AuthService, API_BASE_URL } from './services/auth/auth.service';
+import { NgModule, OpaqueToken } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HttpModule } from "@angular/http";
@@ -16,31 +18,46 @@ import { FullLayoutComponent } from './layout/full-layout.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
 
+import { CookieService } from './services/auth/cookie.service';
 import { MenuService } from './services/menu.service';
 import { MenusResolver } from './services/menus.resolver';
+import { LoginComponent } from './account/login/login.component';
+
+import {Ng2Webstorage} from 'ngx-webstorage';
+import { PasswordComponent } from './account/password/password.component';
+
 
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    BreadcrumbsComponent,
-    FullLayoutComponent,
-    NAV_DROPDOWN_DIRECTIVES,
-    AsideToggleDirective,
-    SIDEBAR_TOGGLE_DIRECTIVES
-    
+	declarations: [
+		AppComponent,
+		HeaderComponent,
+		FooterComponent,
+		BreadcrumbsComponent,
+		FullLayoutComponent,
+		NAV_DROPDOWN_DIRECTIVES,
+		AsideToggleDirective,
+		SIDEBAR_TOGGLE_DIRECTIVES,
+		LoginComponent,
+		PasswordComponent
+	],
+	imports: [
+		BrowserModule,
+		HttpModule,
+		BsDropdownModule.forRoot(),
+		Ng2Webstorage,
+		AppRoutingModule,
 
-  ],
-  imports: [
-    BrowserModule,
-    HttpModule,
-    BsDropdownModule.forRoot(),
-    AppRoutingModule,
-  ],
-  providers: [ MenuService,MenusResolver ],
-  bootstrap: [AppComponent]
+	],
+	providers: [
+		{provide:API_BASE_URL, useValue:'http://localhost:56717/api'},
+		MenuService, 
+		MenusResolver,
+		CookieService,
+		AuthService,
+		AuthGuardService
+	],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }

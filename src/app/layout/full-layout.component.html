@@ -9,7 +9,8 @@
                 <li class="divider"></li>
 
                 <ng-template ngFor let-menu [ngForOf]='getChildMenus(0)'  routerLinkActive="open" >
-                    <li class="nav-item nav-dropdown" [ngClass]="{open: hasCurrentUrl(menu)}" appNavDropdown *ngIf="hasChildren(+menu.id); else nochild">
+                    <li class="nav-item nav-dropdown" [ngClass]="{open: hasCurrentUrl(menu)}" appNavDropdown 
+                        *ngIf="hasChildren(+menu.id); else nochild">
                         <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle>
                             <i class="{{menu.icon}}"></i> {{ menu.title}}</a>
                         

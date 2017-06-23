@@ -2,7 +2,8 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
-//import { AuthService } from './../../services/auth/auth.service';
+
+import { AuthService } from './../../services/auth/auth.service';
 //import { SweetAlertService } from './../../services/sweetalert.service';
 
 
@@ -14,12 +15,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 	 currentUser:any;
-	// constructor(private authService:  AuthService,
-	// 			private router:Router,
-	// 			private alertService:SweetAlertService	 ) { }
+	constructor(private authService:  AuthService,
+				private router:Router	 ) { }
 
 	ngOnInit() {
-		this.currentUser = {username:'Admin'}  //this.authService.currentUser;
+		this.currentUser = { username: this.authService.getUserName() };
 	}
 
 	loginOut($event:any){
