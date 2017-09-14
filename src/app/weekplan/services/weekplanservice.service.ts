@@ -6,14 +6,14 @@ import { Weekplan } from '../models/weekplan';
 
 @Injectable()
 export class WeekplanserviceService {
-  private API_PATH = '';
+  private API_PATH = 'http://localhost:56718/api/Weekplan';
 
   constructor(private http: Http) { }
 
   loadWeekplan(userID: string): Observable<Weekplan[]> {
     return this.request({
       method: RequestMethod.Get,
-      url: `${this.API_PATH}?userID=${userID}`
+      url: `${this.API_PATH}?userId=${userID}`
     });
   }
 
@@ -21,7 +21,7 @@ export class WeekplanserviceService {
     return this.request({
       body,
       method: RequestMethod.Post,
-      url: `${this.API_PATH}`
+      url: `${this.API_PATH}/CreateWeekplan`
     });
   }
 
@@ -29,14 +29,14 @@ export class WeekplanserviceService {
     return this.request({
       body,
       method: RequestMethod.Put,
-      url: `${this.API_PATH}`
+      url: `${this.API_PATH}/UpdateWeekplan`
     });
   }
 
-  deleteWeekplan(body: any): Observable<Weekplan> {
+  deleteWeekplan(ids: any): Observable<Weekplan> {
     return this.request({
       method: RequestMethod.Delete,
-      url: `${this.API_PATH}`
+      url: `${this.API_PATH}/DeleteWeekplan?ids=${ids}`
     });
   }
 

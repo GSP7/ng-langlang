@@ -19,7 +19,7 @@ export class WeekplanEffects {
     loadWeekplans$: Observable<Action> = this.actions$
         .ofType(WeekplanActions.LOAD_WEEKPLAN)
         .startWith(new WeekplanActions.LoadWeekplanAction())
-        .switchMap(() => this.weekplanService.loadWeekplan('')
+        .switchMap(() => this.weekplanService.loadWeekplan('1')
             .map(weekplans => new WeekplanActions.LoadWeekplanSuccessAction(weekplans))
             .catch(error => of(new WeekplanActions.LoadWeekplanFailAction(error)))
         );
@@ -38,17 +38,17 @@ export class WeekplanEffects {
         .map((action: WeekplanActions.EditWeekplanAction) => action.payload)
         .mergeMap(weekplan =>
             this.weekplanService.updateWeekplan(weekplan)
-                .map(() => new WeekplanActions.AddWeekplanSuccessAction(weekplan))
-                .catch(() => of(new WeekplanActions.AddWeekplanFailAction(weekplan)))
+                .map(() => new WeekplanActions.EditWeekplanSuccessAction(weekplan))
+                .catch(() => of(new WeekplanActions.EditWeekplanFailAction(weekplan)))
         );
     @Effect()
     delWeekplan$: Observable<Action> = this.actions$
         .ofType(WeekplanActions.DEL_WEEKPLAN)
         .map((action: WeekplanActions.DelWeekplanAction) => action.payload)
-        .mergeMap(weekplan =>
-            this.weekplanService.deleteWeekplan(weekplan)
-                .map(() => new WeekplanActions.DelWeekplanSuccessAction(weekplan))
-                .catch(() => of(new WeekplanActions.DelWeekplanFailAction(weekplan)))
+        .mergeMap(ids =>
+            this.weekplanService.deleteWeekplan(ids)
+                .map(() => new WeekplanActions.DelWeekplanSuccessAction(ids))
+                .catch(() => of(new WeekplanActions.DelWeekplanFailAction(ids)))
         );
 
     constructor(private actions$: Actions, private weekplanService: WeekplanserviceService) { }

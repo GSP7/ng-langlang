@@ -1,0 +1,224 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-header">
+      <strong>周报</strong>
+    </div>
+    <div class="card-block">
+      <form [formGroup]="myForm" [@flyInOut]="'in'">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">任务名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <input type="text" 
+                  id="tasknameTxt" 
+                  name="tasknameTxt" 
+                  class="form-control"
+                  placeholder="任务名称..."
+                  [formControl]="myForm.get('taskName')">
+                <input type="hidden" 
+                  id="idTxt"
+                  name="idTxt"
+                  [formControl]="myForm.get('id')">
+              </div>
+            </div>
+            <alert type="warning" *ngIf="myForm.controls['taskName'].hasError('required') && myForm.controls['taskName'].touched">
+              <strong>任务名称不能为空!</strong>
+            </alert>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">任务备注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <textarea 
+                  style="height: 100px" 
+                  id="noteTxt" 
+                  name="noteTxt" 
+                  class="form-control"
+                  placeholder="任务备注..."
+                  [formControl]="myForm.get('note')">
+                </textarea>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">验收标准&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <textarea 
+                  style="height: 100px" 
+                  id="acTxt" 
+                  name="acTxt" 
+                  class="form-control"
+                  placeholder="验收标准..."
+                  [formControl]="myForm.get('acceptanceCriteria')">
+                </textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <div class="input-group" (click)="handle()">
+                <span class="input-group-addon">开始结束日期&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <ng-daterangepicker 
+                  id="sfDate" 
+                  name="sfDate" 
+                  [options]="options" 
+                  class="form-control"
+                  [formControl]="myForm.get('sfDate')">
+                </ng-daterangepicker>
+              </div>
+            </div>
+            <alert type="warning" *ngIf="myForm.controls['sfDate'].hasError('required') && myForm.controls['sfDate'].touched">
+              <strong>开始结束日期不能为空!</strong>
+            </alert>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">计划资源投入&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <input type="text" 
+                  id="planRPercentTxt" 
+                  name="planRPercentTxt" 
+                  class="form-control"
+                  placeholder="计划资源投入..."
+                  [formControl]="myForm.get('planResourcePercent')">
+                <span class="input-group-addon">%</span>
+              </div>
+            </div>
+            <alert type="warning" *ngIf="myForm.controls['planResourcePercent'].hasError('required') && myForm.controls['planResourcePercent'].touched">
+              <strong>计划资源投入不能为空!</strong>
+            </alert>
+            <alert type="warning" *ngIf="(myForm.controls['planResourcePercent'].hasError('isnumber') || myForm.controls['planResourcePercent'].hasError('min') || myForm.controls['planResourcePercent'].hasError('max')) && myForm.controls['planResourcePercent'].touched">
+              <strong>计划资源投入必须为【0-100】以内的数字!</strong>
+            </alert>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">实际资源投入&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <input type="text" 
+                  id="rPercentTxt" 
+                  name="rPercentTxt" 
+                  class="form-control"
+                  placeholder="实际资源投入..."
+                  [formControl]="myForm.get('resourcePercent')">
+                <span class="input-group-addon">%</span>
+              </div>
+            </div>
+            <alert type="warning" *ngIf="myForm.controls['resourcePercent'].hasError('required') && myForm.controls['resourcePercent'].touched">
+              <strong>实际资源投入不能为空!</strong>
+            </alert>
+            <alert type="warning" *ngIf="(myForm.controls['resourcePercent'].hasError('isnumber') || myForm.controls['resourcePercent'].hasError('min') || myForm.controls['resourcePercent'].hasError('max')) && myForm.controls['resourcePercent'].touched">
+              <strong>实际资源投入必须为【0-100】以内的数字!</strong>
+            </alert>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">计划完成百分比</span>
+                <input type="text" 
+                  id="planCPercentTxt" 
+                  name="planCPercentTxt" 
+                  class="form-control"
+                  placeholder="计划完成百分比..."
+                  [formControl]="myForm.get('planPercentComplete')">
+                <span class="input-group-addon">%</span>
+              </div>
+            </div>
+            <alert type="warning" *ngIf="myForm.controls['planPercentComplete'].hasError('required') && myForm.controls['planPercentComplete'].touched">
+              <strong>计划完成百分比不能为空!</strong>
+            </alert>
+            <alert type="warning" *ngIf="(myForm.controls['planPercentComplete'].hasError('isnumber') || myForm.controls['planPercentComplete'].hasError('min') || myForm.controls['planPercentComplete'].hasError('max')) && myForm.controls['planPercentComplete'].touched">
+              <strong>计划完成百分比必须为【0-100】以内的数字!</strong>
+            </alert>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">实际完成百分比</span>
+                <input type="text" 
+                  id="cPercentTxt" 
+                  name="cPercentTxt" 
+                  class="form-control"
+                  placeholder="实际完成百分比..."
+                  [formControl]="myForm.get('percentComplete')">
+                <span class="input-group-addon">%</span>
+              </div>
+            </div>
+            <alert type="warning" *ngIf="myForm.controls['percentComplete'].hasError('required') && myForm.controls['percentComplete'].touched">
+              <strong>实际完成百分比不能为空!</strong>
+            </alert>
+            <alert type="warning" *ngIf="(myForm.controls['percentComplete'].hasError('isnumber') || myForm.controls['percentComplete'].hasError('min') || myForm.controls['percentComplete'].hasError('max')) && myForm.controls['percentComplete'].touched">
+              <strong>实际完成百分比必须为【0-100】以内的数字!</strong>
+            </alert>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">未完成说明&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <textarea 
+                  style="height: 100px" 
+                  id="ucDeclareTxt"
+                  name="ucDeclareTxt" 
+                  class="form-control"
+                  placeholder="未完成说明..."
+                  [formControl]="myForm.get('unCompleteDeclare')">
+                </textarea>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">待采取措施&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <textarea 
+                  style="height: 100px" 
+                  id="measureTxt" 
+                  name="measureTxt" 
+                  class="form-control"
+                  placeholder="待采取措施..."
+                  [formControl]="myForm.get('measure')">
+                </textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <button id="btnSave" type="button" class="btn" 
+              [ngClass]="{'btn-primary': btn_Save_mouseover, 'btn-secondary': !btn_Save_mouseover}"  
+              [disabled]="!myForm.valid" 
+              (mouseover)="handleSaveMouseoverAndMouseout()" 
+              (mouseout)="handleSaveMouseoverAndMouseout()" 
+              (click)="handleSave()">保存
+            </button>
+            <button id="btnSaveReturn" type="button" class="btn" 
+              [ngClass]="{'btn-primary': btn_SaveAndClose_mouseover, 'btn-secondary': !btn_SaveAndClose_mouseover}" 
+              [disabled]="!myForm.valid" 
+              (mouseover)="handleSaveAndCloseMouseoverAndMouseout()" 
+              (mouseout)="handleSaveAndCloseMouseoverAndMouseout()" 
+              (click)="handleSaveAndClose()">保存并关闭
+            </button>
+            <button id="btnCancel" type="button" class="btn" 
+              [ngClass]="{'btn-primary': btn_Cancel_mouseover, 'btn-secondary': !btn_Cancel_mouseover}" 
+              (mouseover)="handleCancelMouseoverAndMouseout()" 
+              (mouseout)="handleCancelMouseoverAndMouseout()" 
+              (click)="handleCancel($event)">取消
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

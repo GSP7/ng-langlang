@@ -1,6 +1,9 @@
 import { Component, Input, Output, EventEmitter, ElementRef, ViewChild, ViewChildren, QueryList, OnInit } from '@angular/core';
+import { List, Map } from 'immutable';
 
 import { CheckboxdirectiveDirective } from '../Directive/checkboxdirective.directive';
+
+import * as WeekplanReducer from '../reducer/weekplan';
 
 @Component({
   selector: 'app-weekplanlist',
@@ -8,6 +11,9 @@ import { CheckboxdirectiveDirective } from '../Directive/checkboxdirective.direc
   styleUrls: ['./weekplanlist.component.css']
 })
 export class WeekplanlistComponent implements OnInit {
+  @Input() loadStatus: Map<string, string>;
+  @Input() weekplans: Map<string, WeekplanReducer.WeekplansState>;
+  @Input() result: List<string>;
   @Output() GetCheckedboxList = new EventEmitter();
   @ViewChild('headCheckbox') headCheckbox: ElementRef;
   @ViewChildren(CheckboxdirectiveDirective) checkboxs: QueryList<CheckboxdirectiveDirective>;

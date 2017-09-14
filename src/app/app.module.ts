@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
@@ -19,7 +20,12 @@ import { HeaderComponent } from './layout/header/header.component';
 import { MenuService } from './services/menu.service';
 import { MenusResolver } from './services/menus.resolver';
 
-
+// Redux
+import { StoreModule } from '@ngrx/store';
+// reducer
+import { rootReducer } from './reducer/index';
+// devtools
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -34,9 +40,12 @@ import { MenusResolver } from './services/menus.resolver';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpModule,
     BsDropdownModule.forRoot(),
     AppRoutingModule,
+    StoreModule.provideStore(rootReducer),
+    StoreDevtoolsModule.instrumentOnlyWithExtension(),
   ],
   providers: [
     MenuService,

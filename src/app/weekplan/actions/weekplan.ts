@@ -69,19 +69,19 @@ export class EditWeekplanFailAction implements Action {
 export class DelWeekplanAction implements Action {
     readonly type = DEL_WEEKPLAN;
 
-    constructor(public payload: Weekplan) { }
+    constructor(public payload: string) { }
 }
 
 export class DelWeekplanSuccessAction implements Action {
     readonly type = DEL_WEEKPLAN_SUCCESS;
 
-    constructor(public payload: Weekplan) { }
+    constructor(public payload: string) { }
 }
 
 export class DelWeekplanFailAction implements Action {
     readonly type = DEL_WEEKPLAN_FAIL;
 
-    constructor(public payload: Weekplan) { }
+    constructor(public payload: string) { }
 }
 
 export type Actions

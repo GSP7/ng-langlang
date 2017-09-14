@@ -1,5 +1,17 @@
 <div style="margin: 4px 0 4px 0; border:1em">
-  <button id="btnNew" type="button" class="btn btn-primary" data-toggle="modal" (click)="CreateUserInfo()">新建</button>
-  <button id="btnEdit" type="button" class="btn btn-secondary" data-toggle="modal" (click)="EditUserInfo()">编辑</button>
-  <button id="btnDel" type="button" class="btn btn-secondary" (click)="DelUserInfo()">删除</button>
+  <button id="btnNew" type="button" class="btn" data-toggle="modal" 
+    [ngClass]="{'btn-primary': btn_Add_Mouseover, 'btn-secondary': !btn_Add_Mouseover}" 
+    (mouseover)="handleAddMouseout()" 
+    (mouseout)="handleAddMouseout()" 
+    (click)="handleCreate()">新建</button>
+  <button id="btnEdit" type="button" class="btn" data-toggle="modal" 
+    [ngClass]="{'btn-primary': btn_Edit_Mouseover, 'btn-secondary': !btn_Edit_Mouseover}" 
+    (mouseover)="handleEditMouseout()" 
+    (mouseout)="handleEditMouseout()" 
+    (click)="handleEdit()">编辑</button>
+  <button id="btnDel" type="button" class="btn" 
+    [ngClass]="{'btn-primary': btn_Del_Mouseover, 'btn-secondary': !btn_Del_Mouseover}" 
+    (mouseover)="handleDelMouseout()" 
+    (mouseout)="handleDelMouseout()" 
+    (click)="handleDel()">删除</button>
 </div>

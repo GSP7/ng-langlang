@@ -1,33 +1,33 @@
 export interface PageInfo {
-    PageSize: number;
-    PageIndex: number;
-    TotalRecord: number;
+    pageSize: number;
+    pageIndex: number;
+    totalRecord: number;
 }
 
 export interface User {
-    ID: string;
-    UserName: string;
-    NickName?: string;
-    Password?: string;
-    Sex?: string;
-    Age?: number;
+    id: string;
+    userName: string;
+    nickName?: string;
+    password?: string;
+    sex?: string;
+    age?: number;
 }
 
 
 export interface Weekplan {
-    ID: string;
-    TaskName: string;
-    AcceptanceCriteria: string;
-    User: User;
-    PlanResourcePercent: number;
-    ResourcePercent: number;
-    PlanPercentComplete: number;
-    PercentComplete: number;
-    Note?: string;
-    UnCompleteDeclare: string;
-    Measure: string;
-    PlanProgress?: number;
-    Progress?: number;
-    StartDate: string;
-    FinishDate: string;
+    id: string;
+    taskName: string;
+    acceptanceCriteria?: string;
+    userID: string;
+    planResourcePercent: number;
+    resourcePercent: number;
+    planPercentComplete: number;
+    percentComplete: number;
+    note?: string;
+    unCompleteDeclare?: string;
+    measure?: string;
+    planProgress?: number;
+    progress?: number;
+    startDate: string;
+    finishDate: string;
 }

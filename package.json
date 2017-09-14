@@ -29,6 +29,8 @@
     "angular2-uuid": "^1.1.1",
     "core-js": "^2.4.1",
     "immutable": "^3.8.1",
+    "ng-daterangepicker": "^0.2.0",
+    "ng2-datepicker": "^1.8.3",
     "ngx-bootstrap": "^1.7.1",
     "normalizr": "^3.2.3",
     "reselect": "^3.0.1",
